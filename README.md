@@ -16,7 +16,7 @@ Dự án này là một hệ thống thị giác máy tính mã nguồn mở, ch
 
 ## 🛠 Yêu cầu Môi trường (Prerequisites)
 - **Hệ điều hành:** Windows 10/11, Linux, macOS.
-- **LUÝ Ý ĐẶC BIỆT DÀNH CHO BẢN WINDOWS:** Toàn bộ đường dẫn thư mục lưu trữ dự án phải KHÔNG có ký tự tiếng Việt (hay bất kỳ ký tự Unicode/Dấu cách đặc biệt nào). Nếu không, module C++ lõi của MediaPipe sẽ văng lỗi `srcdir is not accessible`.
+- **LƯU Ý ĐẶC BIỆT DÀNH CHO BẢN WINDOWS:** Toàn bộ đường dẫn thư mục lưu trữ dự án phải KHÔNG có ký tự tiếng Việt (hay bất kỳ ký tự Unicode/Dấu cách đặc biệt nào). Nếu không, module C++ lõi của MediaPipe sẽ văng lỗi `srcdir is not accessible`.
 - **Python:** Phiên bản Python `3.8`, `3.9` hoặc `3.10` (Hạn chế xài `3.11` trở lên vì thư viện Tensor C++ cũ dễ vỡ).
 - Máy tính bắt buộc phải kết nối với Camera (Webcam).
 
@@ -31,22 +31,20 @@ cd Biometrics
 ```
 
 ### Bước 2: Cài đặt Thư viện
-Bạn nên tạo một môi trường ảo (Virtual Environment) trước khi cài đặt:
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Bước 3: Khởi động Hệ thống
-Bộ ứng dụng Menu cốt lõi nằm ở thư mục `project/`:
 ```bash
-python project/main.py
+python main.py
 ```
-*(Trong lần chạy đầu tiên, mã nguồn sẽ mất khoảng 5-10 giây để tải xuống vỏ Model AI `face_landmarker.task` dung lượng 2MB trực tiếp từ Google Server cho bạn.)*
+*(Trong lần chạy đầu tiên, mã nguồn sẽ tải xuống mô hình AI `face_landmarker.task` 2MB).*
 
 ---
 
 ## 🎮 Luồng Vận Hành Hệ Thống (Usage Flow)
-Ngay khi khởi động lệnh `main.py`, một Menu màu nhiệm sẽ xuất hiện trên Terminal:
+Ngay khi khởi động lệnh `main.py`, một Menu sẽ xuất hiện trên Terminal:
 - **`[Option 1] Đăng ký Thẻ Face ID:`** Điền tên của bạn. Máy sẽ quét tĩnh 30 khung hình để nén ra Vector Tỷ Lệ hoàn hảo bằng Toán Học Trung Bình Cộng, và lưu vào tệp dữ liệu `Database.csv`.
 - **`[Option 2] Cổng An Ninh Chiếm Quyền:`** Màn hình chia đôi (Split-Screen) sẽ hiện lên. Bạn cầm 1 bức ảnh giơ lên, máy sẽ báo cờ Đỏ (Gia Mao). Bạn đưa mặt vào, máy báo Vàng (Pending). Bạn bắt buộc phải **Chớp Mắt** để máy tính qua vòng kiểm duyệt Liveness, sau đó hệ thống sẽ nhận diện tự động và gọi tên bạn Báo Xanh (Verified).
 - **`[Option 3] 3D Mesh Viewer:`** Bật độc lập chế độ chiếu ảnh đám mây điểm 3D thô để vọc vạch kỹ thuật chiều sâu điểm Mũi và Má.
@@ -56,12 +54,11 @@ Ngay khi khởi động lệnh `main.py`, một Menu màu nhiệm sẽ xuất hi
 ## 📁 Cấu trúc Mã Nguồn (Architecture)
 Dự án được xây dựng gãy gọn theo Tỷ lệ Tiêu Chuẩn Mô-đun (Modular Refactoring):
 ```text
-├── project/
-│   ├── main.py             # Router Điều phối chính của Menu App
-│   ├── utils.py            # Trái tim của App: Chứa 100% Thuật toán Toán Học và Liveness Cốt Lõi
-│   ├── Enrollment.py       # Module thu thập Vector khung hình
-│   ├── Recognition.py      # Module xử lý UI Split-Screen danh tính
-│   └── facemesh.py         # Module Trình chiếu mô phỏng 3D
-├── requirements.txt
-└── README.md
+├── main.py             # Router Điều phối chính của Menu App
+├── utils.py            # Trái tim của App: Chứa 100% Thuật toán Toán Học và Liveness Cốt Lõi
+├── Enrollment.py       # Module thu thập Vector khung hình
+├── Recognition.py      # Module xử lý UI Split-Screen danh tính
+├── facemesh.py         # Module Trình chiếu mô phỏng 3D
+├── requirements.txt    # Danh sách thư viện tải bằng Pip
+└── README.md           # Hướng dẫn này
 ```
