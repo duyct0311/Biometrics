@@ -1,4 +1,12 @@
-opencv-python>=4.7.0
+# ─── Computer Vision ──────────────────────────────────────────────────────────
+# opencv-contrib-python bao gồm toàn bộ opencv-python + các module bổ sung
+# (FaceRecognizerSF dùng trong utils.py yêu cầu gói contrib)
+# KHÔNG cài đồng thời opencv-python vì sẽ xung đột (cùng cung cấp module cv2)
 opencv-contrib-python>=4.7.0
-mediapipe==0.10.33
+
+# ─── AI / Deep Learning ───────────────────────────────────────────────────────
+# Tasks API (mediapipe.tasks.python) có từ phiên bản 0.10.0
+mediapipe>=0.10.0
+
+# ─── Số học / Mảng ────────────────────────────────────────────────────────────
 numpy>=1.21.0

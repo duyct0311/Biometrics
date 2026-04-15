@@ -1,0 +1,75 @@
+# =============================================================================
+#  .gitignore – Hệ thống Sinh Trắc Học (Biometric Face Recognition)
+# =============================================================================
+
+# ─── MÔ HÌNH AI (Binary, kích thước lớn) ─────────────────────────────────────
+# Các file này được tải tự động khi chạy main.py.
+# Không commit file nhị phân lớn vào Git → dùng Git LFS nếu cần chia sẻ.
+*.onnx
+*.task
+
+# ─── CƠ SỞ DỮ LIỆU SINH TRẮC HỌC (DỮ LIỆU NHẠY CẢM) ────────────────────────
+# QUAN TRỌNG: Database.csv chứa embedding khuôn mặt của người dùng.
+# Đây là dữ liệu cá nhân nhạy cảm → TUYỆT ĐỐI không đưa lên Git công khai.
+Database.csv
+*.csv
+
+# ─── MÔI TRƯỜNG ẢO PYTHON ─────────────────────────────────────────────────────
+# Tái tạo bằng: python -m venv venv && pip install -r requirements.txt
+venv/
+.venv/
+env/
+.env/
+
+# ─── BYTECODE & CACHE PYTHON ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# ─── PHÂN PHỐI & PACKAGING PYTHON ────────────────────────────────────────────
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+MANIFEST
+
+# ─── CÔNG CỤ VÀ IDE ───────────────────────────────────────────────────────────
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── HỆ ĐIỀU HÀNH ────────────────────────────────────────────────────────────
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ─── LOG & FILE TẠM ──────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.bak
+
+# ─── BIẾN MÔI TRƯỜNG & BÍ MẬT ────────────────────────────────────────────────
+.env
+.env.*
+secrets.py
+config_local.py
